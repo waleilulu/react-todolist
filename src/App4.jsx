@@ -40,6 +40,19 @@ function App() {
     setTodo(""); // 將 input輸入框清空
   };
 
+  // check Todo
+  const toggleCompletion = (id)=>{
+    // 到 todos 找到該筆 id 資訊並將completion進行置換
+    setTodos(
+      //todos.map((todo)=> todo.id === id? {id: todo.id, tex: todo.text, completed: !todo.completed} : todo)
+      todos.map((todo)=> todo.id === id? {...todo, completed: !todo.completed} : todo)
+      //                                 ^
+      //                                 |- {...todo, completed: !todo.completed}
+      //                                 | {id: 1, text: 吃早餐, completed: false}
+    
+    )
+  }
+
   return (
     <>
       <h1>My TodoList</h1>
@@ -52,8 +65,14 @@ function App() {
           return (
             <li key={todo.id}>
               {todo.id}
+
+              <input type="checkbox" 
+                     checked={todo.completed} 
+                     onChange={()=>toggleCompletion(todo.id)} />
+
               {todo.text}
-              {todo.completed}
+
+
             </li>
           )
         })}
