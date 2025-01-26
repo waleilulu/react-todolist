@@ -19,7 +19,7 @@ function App() {
     setTodo(event.target.value);
   };
 
-  // 按下Add按鈕要處理的事情
+  // 新增 Todo, 按下 Add 按鈕要處理的事情
   const handleClick = () => {
     if (!todo) return; // 若todo沒有資料則離開此程序
 
@@ -40,7 +40,7 @@ function App() {
     setTodo(""); // 將 input輸入框清空
   };
 
-  // check Todo
+  // 更新 Todo 是否完成
   const toggleCompletion = (id)=>{
     // 到 todos 找到該筆 id 資訊並將completion進行置換
     setTodos(
@@ -51,6 +51,12 @@ function App() {
       //                                 | {id: 1, text: 吃早餐, completed: false}
     
     )
+  }
+  
+  // 刪除 todo
+  const handleDelete = (id)=>{
+    // 利用filter來過濾不需要的資訊
+    setTodos(todos.filter((todo)=>todo.id !== id))
   }
 
   return (
@@ -72,6 +78,7 @@ function App() {
 
               {todo.text}
 
+              <button onClick={()=> handleDelete(todo.id)}>X</button>
 
             </li>
           )
