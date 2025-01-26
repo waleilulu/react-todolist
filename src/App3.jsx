@@ -5,6 +5,8 @@ import { useState } from "react";
 function App() {
   // const todos = ["吃早餐", "做體操", "寫程式", "辦年貨"];
   const [todos, setTodos] = useState( ["吃早餐", "做體操", "寫程式", "辦年貨", "發紅包"]); // 渲染網頁
+  
+  // 用來存放<input>的值
   const [todo, setTodo] = useState('') // 預設初始值
 
   // input的onChange事件處理
